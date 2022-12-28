@@ -1,14 +1,21 @@
-from flask import Flask
+import pymysql
+from app import app
+from db import mysql
+from flask import jsonify
 
-app = Flask(__name__)
+@app.route('/')
+def users():
+    conn = mysql.connect()
 
-@app.route("/<id>")
-def getID(id):
-    return "Returned the id: " + str(id)
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("SELECT * FROM user")
 
-@app.route("/")
-def hello():
-    return "Hello world"
-    
+    rows = cursor.fetchall()
+
+    resp = jsonify(rows)
+    resp.status_code = 200
+
+    return resp
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True,host='0.0.0.0')

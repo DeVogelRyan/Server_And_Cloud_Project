@@ -1,6 +1,7 @@
-FROM python:latest
-Workdir /app
-Copy . .
-Run pip install -r requirements.txt
-Entrypoint ["python"]
-Cmd ["app.py"]
+FROM python:3.8.5-alpine
+COPY . /app
+WORKDIR /app
+RUN apk add gcc musl-dev python3-dev libffi-dev openssl-dev
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
