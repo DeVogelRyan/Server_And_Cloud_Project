@@ -1,17 +1,17 @@
-version: "3"
+version: "2"
 services:
   app:
-    build: .
+    build: ./app
     links:
       - db
     ports:
       - "5000:5000"
 
   db:
-    image: mysql:8.0.21
+    image: mysql:5.7
     ports:
-      - "30000:3306"
+      - "32000:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ryan
+      - ./db:/docker-entrypoint-initdb.d/:ro

@@ -1,6 +1,11 @@
-FROM python:3.8.5-alpine
-COPY . /app
+FROM python:3.6
+
+EXPOSE 5000
+
 WORKDIR /app
+
+COPY requirements.txt /app
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+
+COPY app.py /app
+CMD python app.py
