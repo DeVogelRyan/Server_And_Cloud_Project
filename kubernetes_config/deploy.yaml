@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flask-app-container
-          image: flask-ryan
+          image: ryandv123/flask-ryan
           ports:
             - containerPort: 5001
               protocol: TCP
