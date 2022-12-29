@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: flask-app
+
+spec:
+    containers:
+    - name: flask-app-container
+      image: ryandv123/flask-ryan
+      imagePullPolicy: Always
