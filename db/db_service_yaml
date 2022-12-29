@@ -22,6 +22,7 @@ metadata:
     app: mysql
     tier: database
 spec:
+  replicas: 1
   selector: # mysql Pod Should contain same labels
     matchLabels:
       app: mysql
