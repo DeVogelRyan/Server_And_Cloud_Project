@@ -61,6 +61,10 @@ data:
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
+    CREATE TABLE users (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
+    INSERT INTO users VALUES (1, 'Abhijeet', 32, 'm');
+    INSERT INTO users VALUES (2, 'Anjali', 29, 'f');
+    INSERT INTO users VALUES (3, 'Aayush', 27, 'm');
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
