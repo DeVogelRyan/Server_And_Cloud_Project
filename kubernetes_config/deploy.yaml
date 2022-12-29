@@ -17,7 +17,6 @@ spec:
       containers:
         - name: flask-app-container
           image: flask-ryan
-          imagePullPolicy: Never
           ports:
             - containerPort: 5001
               protocol: TCP
