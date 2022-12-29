@@ -1,33 +1,23 @@
-from typing import List, Dict
-from flask import Flask
-import mysql.connector
-import json
-
+from flask import Flask,render_template, request
+from flask_mysqldb import MySQL
+ 
 app = Flask(__name__)
+ 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'RyanProject'
+app.config['MYSQL_PASSWORD'] = 'Password!321'
+app.config['MYSQL_DB'] = 'mydata'
+ 
+mysql = MySQL(app)
 
-
-def favorite_colors() -> List[Dict]:
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'knights'
-    }
-    connection = mysql.connector.connect(**config)
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM favorite_colors')
-    results = [{name: color} for (name, color) in cursor]
-    cursor.close()
-    connection.close()
-
-    return results
-
-
-@app.route('/')
-def index() -> str:
-    return json.dumps({'favorite_colors': favorite_colors()})
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+#Creating a connection cursor
+cursor = mysql.connection.cursor()
+ 
+#Executing SQL Statements
+cursor.execute(''' INSERT INTO friends VALUES (4, 'Ryan', 20, 'm') ''')
+ 
+#Saving the Actions performed on the DB
+mysql.connection.commit()
+ 
+#Closing the cursor
+cursor.close()
