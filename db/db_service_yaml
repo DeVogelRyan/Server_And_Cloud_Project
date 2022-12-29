@@ -47,6 +47,7 @@ data:
   init.sql: |
     CREATE USER 'RyanProject'@'localhost' IDENTIFIED BY 'Password!321';
     GRANT PRIVILEGE ON mydata.friends TO 'RyanProject'@'localhost';
+    FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
     CREATE TABLE friends (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
