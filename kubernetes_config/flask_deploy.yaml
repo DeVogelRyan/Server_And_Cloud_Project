@@ -12,7 +12,6 @@ spec:
     metadata:
       labels:
         app: flask-app
-
     spec:
       containers:
         - name: flask-app-container
