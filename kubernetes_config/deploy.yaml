@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flask-app-container
-          image: ryandv123/flask
+          image: flask-ryan
           imagePullPolicy: Never
           ports:
             - containerPort: 5001
