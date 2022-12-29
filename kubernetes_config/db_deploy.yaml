@@ -1,13 +1,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  labels:
+    app: db
+  name: db
 spec:
   ports:
-  - port: 3306
+  - name: "3306"
+    port: 3306
+    targetPort: 3306
   selector:
-    app: mysql
-  clusterIP: None
+    app: db
+    name: db
+  type: ClusterIP
+status:
+  loadBalancer: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -61,10 +68,6 @@ data:
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
-    CREATE TABLE users (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
-    INSERT INTO users VALUES (1, 'Abhijeet', 32, 'm');
-    INSERT INTO users VALUES (2, 'Anjali', 29, 'f');
-    INSERT INTO users VALUES (3, 'Aayush', 27, 'm');
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
