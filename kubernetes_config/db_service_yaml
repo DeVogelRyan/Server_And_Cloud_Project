@@ -50,10 +50,6 @@ data:
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
-    CREATE TABLE friends (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
-    INSERT INTO friends VALUES (1, 'Abhijeet', 32, 'm');
-    INSERT INTO friends VALUES (2, 'Anjali', 29, 'f');
-    INSERT INTO friends VALUES (3, 'Aayush', 27, 'm');
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
