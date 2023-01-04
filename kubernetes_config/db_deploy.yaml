@@ -9,7 +9,7 @@ spec:
     app: mysql
   clusterIP: None
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
@@ -61,8 +61,8 @@ data:
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
-    CREATE TABLE users (name VARCHAR(256));
-    INSERT INTO users VALUES("test");
+    CREATE TABLE users (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
+    INSERT INTO users VALUES (1, 'Abhijeet', 32, 'm');
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
