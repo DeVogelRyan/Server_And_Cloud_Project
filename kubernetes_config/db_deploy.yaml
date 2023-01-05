@@ -57,12 +57,12 @@ metadata:
 data:
   init.sql: |
     CREATE USER 'RyanProject'@'localhost' IDENTIFIED BY 'Password!321';
-    GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on mydata.friends TO 'RyanProject'@'localhost' WITH GRANT OPTION;
+    GRANT ALL PRIVILEGES ON mydata.users TO 'RyanProject'@'localhost';;
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
     USE mydata;
     CREATE TABLE users (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
-    INSERT INTO users VALUES (1, 'Abhijeet', 32, 'm');
+    INSERT INTO users VALUES (1, 'Ryan', 32, 'm');
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
