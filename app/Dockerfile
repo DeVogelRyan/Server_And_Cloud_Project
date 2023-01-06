@@ -1,11 +1,11 @@
-FROM python:3.6
+FROM alpine
 
 EXPOSE 5000
 
-WORKDIR /app
+COPY key.pem cert.pem requirements.txt app.py ./
 
-COPY requirements.txt /app
+RUN apk add --no-cache py3-flask py3-pip
+
 RUN pip install -r requirements.txt
 
-COPY app.py /app
-CMD python app.py
+CMD flask run --cert=cert.pem --key=key.pem --host=0.0.0.0
