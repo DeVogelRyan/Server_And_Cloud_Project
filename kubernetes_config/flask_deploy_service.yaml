@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-rest-hello-world-deploy
+  labels:
+    type: restapi
+spec:
+  selector: 
+    matchLabels:
+      app: flask-rest-hello-world
+  replicas: 2
+  template:
+    metadata:
+      name: flask-rest-hello-world-tmpl
+      labels:
+        app: flask-rest-hello-world
+    spec:
+      containers:
+        - name: flask-rest-hello-world
+          image: ryandv123/flask-ryan:latest
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-rest-hello-world-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-rest-hello-world
+  ports:
+    - protocol: "TCP"
+      port: 8000
+      targetPort: 5000
