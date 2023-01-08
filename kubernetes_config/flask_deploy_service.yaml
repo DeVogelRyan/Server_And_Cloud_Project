@@ -5,7 +5,7 @@ metadata:
   labels:
     type: restapi
 spec:
-  selector: 
+  selector:
     matchLabels:
       app: flask-rest-hello-world
   replicas: 2
