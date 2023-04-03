@@ -1,5 +1,7 @@
 # Server_And_Cloud_Project
 
+## What is this project?
+This project is for a subject on my school namely Server and cloud. We needed to make a kubernetes cluster and I chose to do it with a flask application and SQL server. There also needed to be an option to backup this sql.
 
 ## Remove remote access root:
 ```sql
