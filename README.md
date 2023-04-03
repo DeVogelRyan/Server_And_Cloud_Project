@@ -3,6 +3,12 @@
 ## What is this project?
 This project is for a subject on my school namely Server and cloud. We needed to make a kubernetes cluster and I chose to do it with a flask application and SQL server. There also needed to be an option to backup this sql.
 
+## Kubectl dashboard:
+![Dashboard](kubectl_dashboard.png "Dashboard")
+
+(Not my image)
+
+
 ## Remove remote access root:
 ```sql
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
