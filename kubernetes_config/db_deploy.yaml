@@ -56,7 +56,7 @@ metadata:
   name: mysql-initdb-config
 data:
   init.sql: |
-    CREATE USER 'RyanProject'@'localhost' IDENTIFIED BY 'Password!321';
+    CREATE USER '${{USERNAME}}'@'localhost' IDENTIFIED BY '${{USERPASSWORD}}';
     GRANT ALL PRIVILEGES ON mydata.users TO 'RyanProject'@'localhost';;
     FLUSH PRIVILEGES;
     CREATE DATABASE IF NOT EXISTS mydata;
